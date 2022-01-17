@@ -97,14 +97,14 @@ animations = [ {
 "name": "shoot",
 "speed": 17.0
 }, {
-"frames": [ ExtResource( 51 ), ExtResource( 56 ), ExtResource( 53 ), ExtResource( 40 ), ExtResource( 54 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 55 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 47 ), ExtResource( 37 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 45 ) ],
-"loop": true,
-"name": "move",
-"speed": 25.0
-}, {
 "frames": [ ExtResource( 36 ), ExtResource( 35 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": false,
 "name": "meleeattack",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 56 ), ExtResource( 53 ), ExtResource( 40 ), ExtResource( 54 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 55 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 47 ), ExtResource( 37 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 45 ) ],
+"loop": true,
+"name": "move",
 "speed": 25.0
 } ]
 

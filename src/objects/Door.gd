@@ -13,7 +13,6 @@ export(STATES) var state := STATES.CLOSED
 onready var tween := $Tween
 onready var front_ray := $FrontRay
 onready var rotation_point := $RotationPoint
-onready var collision := $RotationPoint/StaticBody2D/CollisionShape2D
 
 
 # ------------- INTERNALS -------------
@@ -58,7 +57,6 @@ func open():
 		Tween.EASE_IN_OUT
 	)
 	
-	collision.disabled = true
 	state = STATES.OPEN_FRONT if to_front else STATES.OPEN_BACK
 
 
@@ -77,6 +75,5 @@ func close():
 		Tween.EASE_IN_OUT
 	)
 	
-	collision.disabled = false
 	state = STATES.CLOSED
 
