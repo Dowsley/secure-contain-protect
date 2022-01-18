@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/objects/door/Door.gd" type="Script" id=1]
 [ext_resource path="res://assets/hotlinemiamiclone/door.png" type="Texture" id=2]
@@ -8,6 +8,9 @@ extents = Vector2( 17, 3 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 2 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( -5, 0, -5, 0, 39, 0, 39, 0 )
 
 [node name="Door" type="Node2D" groups=["interact"]]
 script = ExtResource( 1 )
@@ -36,5 +39,8 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="RotationPoint"]
 position = Vector2( 16, 0 )
 texture = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="RotationPoint"]
+occluder = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
