@@ -7,11 +7,11 @@ var interact_cooldown := 20
 # Nodes
 onready var interact_ray = $InteractRay
 onready var body_sprite = $BodySprite
-
 var gun = preload("res://src/entities/player/guns/AssaultRifle.tscn").instance()
 
 # ------------- INTERNALS -------------
 func _ready():
+	add_child(gun)
 	if !TYPE:
 		TYPE = TYPES.PLAYER
 
@@ -48,14 +48,8 @@ func state_attack():
 
 # ------------- LOOPS -------------
 func loop_attack():
-	randomize()
-	var sound = "res://assets/bullet%d.mp3" % (randi() % 3 + 1)
-	
-	gun.fire(self)
-	anim_switch("shoot")
-	$GunAnimationPlayer.play("shoot")
-	SFX.play("res://assets/gunshot.wav", 10, 0.8)
-	SFX.play_after_time(sound, 0.5)
+	if gun:
+		gun.fire(self)
 
 
 func loop_controls():

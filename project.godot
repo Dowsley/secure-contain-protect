@@ -38,7 +38,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SFX="*res://src/engine/Sound.gd"
+SoundHandler="*res://src/engine/Sound.gd"
 
 [display]
 

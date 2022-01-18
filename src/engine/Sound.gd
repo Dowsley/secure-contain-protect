@@ -1,6 +1,7 @@
 extends Node
 
-func play(sound: String, db=0, pitch=1):
+
+func play(sound: String, db, pitch):
 	var player := AudioStreamPlayer.new()
 	add_child(player)
 	player.connect("finished", player, "queue_free")
@@ -9,10 +10,11 @@ func play(sound: String, db=0, pitch=1):
 	player.pitch_scale = pitch
 	player.play()
 
-func play_after_time(sound: String, time):
+
+func play_after_time(sound: String, db, pitch, time):
 	var timer := Timer.new()
 	timer.wait_time = time
 	add_child(timer)
-	timer.connect("timeout", self, "play", [sound, 0, 1])
+	timer.connect("timeout", self, "play", [sound, db, pitch])
 	timer.connect("timeout", timer, "queue_free")
 	timer.start()
