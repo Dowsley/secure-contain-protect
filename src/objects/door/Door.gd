@@ -27,7 +27,7 @@ func _ready():
 
 
 # ------------- ESSENTIALS -------------
-func interact(_player):
+func interact(player):
 	match state:
 		STATES.CLOSED:
 			open()
@@ -35,6 +35,7 @@ func interact(_player):
 			close()
 		STATES.OPEN_BACK:
 			close()
+	player.interact_cooldown = 20
 	tween.start()
 
 

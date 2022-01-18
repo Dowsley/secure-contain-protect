@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://assets/soldier/whole/rifle/idle/survivor-idle_rifle_1.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/player/Player.gd" type="Script" id=2]
@@ -80,6 +80,7 @@
 [ext_resource path="res://assets/soldier/whole/rifle/reload/survivor-reload_rifle_3.png" type="Texture" id=78]
 [ext_resource path="res://assets/soldier/whole/rifle/reload/survivor-reload_rifle_4.png" type="Texture" id=79]
 [ext_resource path="res://assets/light.png" type="Texture" id=80]
+[ext_resource path="res://assets/soldier/skeleton/muzzle_flash_01.png" type="Texture" id=81]
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
@@ -94,9 +95,9 @@ animations = [ {
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ) ],
-"loop": true,
+"loop": false,
 "name": "shoot",
-"speed": 17.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 36 ), ExtResource( 35 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": false,
@@ -113,6 +114,41 @@ animations = [ {
 radius = 7.0
 height = 4.00002
 
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "shoot"
+length = 0.12
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=14]
+blend_mode = 1
+
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 light_mask = 3
 scale = Vector2( 0.999999, 0.999999 )
@@ -123,11 +159,12 @@ TYPE = 0
 [node name="BodySprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 13 )
-animation = "idle"
-frame = 3
+animation = "shoot"
+frame = 2
 playing = true
 
 [node name="InteractRay" type="RayCast2D" parent="."]
+visible = false
 position = Vector2( -2, 1 )
 enabled = true
 cast_to = Vector2( 20, 0 )
@@ -143,7 +180,7 @@ shape = SubResource( 12 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="PlayerVision" type="Light2D" parent="."]
 position = Vector2( -1, 1 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 80 )
@@ -152,3 +189,24 @@ shadow_enabled = true
 shadow_gradient_length = 0.3
 shadow_filter = 2
 shadow_filter_smooth = 5.0
+
+[node name="GunAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 16 )
+anims/shoot = SubResource( 15 )
+
+[node name="MuzzleFlash" type="Sprite" parent="."]
+visible = false
+material = SubResource( 14 )
+position = Vector2( 19, 6.00001 )
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 81 )
+
+[node name="Light2D" type="Light2D" parent="MuzzleFlash"]
+position = Vector2( -33.3327, -0.00012207 )
+texture = ExtResource( 80 )
+texture_scale = 25.0
+color = Color( 1, 0.603922, 0.137255, 1 )
+shadow_enabled = true
+shadow_gradient_length = 0.3
+shadow_filter = 2
+shadow_filter_smooth = 10.0

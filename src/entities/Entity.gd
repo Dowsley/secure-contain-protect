@@ -24,7 +24,8 @@ var sprite_dir: int = SPRITE_DIRS.DOWN
 
 # STATE
 enum STATES {
-	DEFAULT
+	DEFAULT,
+	ATTACK
 }
 var state: int = STATES.DEFAULT
 
