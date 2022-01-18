@@ -760,6 +760,8 @@ __meta__ = {
 }
 
 [node name="Connection" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -770,6 +772,8 @@ position = Vector2( 752.5, 544 )
 shape = SubResource( 32 )
 
 [node name="Kitchen" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 0
 __meta__ = {
 "_edit_lock_": true
 }
