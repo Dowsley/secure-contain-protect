@@ -3,10 +3,12 @@ class_name Player
 
 # Internals
 var interact_cooldown := 20
+var looking_at: Vector2
 
 # Nodes
 onready var interact_ray = $InteractRay
 onready var body_sprite = $BodySprite
+onready var muzzle = $Muzzle
 var gun = preload("res://src/entities/player/guns/AssaultRifle.tscn").instance()
 
 # ------------- INTERNALS -------------
@@ -49,7 +51,7 @@ func state_attack():
 # ------------- LOOPS -------------
 func loop_attack():
 	if gun:
-		gun.fire(self)
+		gun.shoot(self)
 
 
 func loop_controls():
@@ -64,7 +66,8 @@ func loop_controls():
 	move_dir.y = -int(UP) + int(DOWN)
 	
 	# Mouse
-	look_at(get_global_mouse_position())
+	looking_at = get_global_mouse_position()
+	look_at(looking_at)
 	
 	if Input.is_action_just_pressed("primary_action"):
 		state = STATES.ATTACK

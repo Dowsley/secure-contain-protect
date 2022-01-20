@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fragmentation1.mp3-3095a5ec6df6b1dd9a1a8a9bffc7f3b8.mp3str"
+
+[deps]
+
+source_file="res://assets/fragmentation1.mp3"
+dest_files=[ "res://.import/fragmentation1.mp3-3095a5ec6df6b1dd9a1a8a9bffc7f3b8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

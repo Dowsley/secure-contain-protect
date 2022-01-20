@@ -153,3 +153,9 @@ shadow_enabled = true
 shadow_gradient_length = 0.3
 shadow_filter = 2
 shadow_filter_smooth = 5.0
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 15, 6.00001 )
+__meta__ = {
+"_gizmo_extents_": 3.1
+}
